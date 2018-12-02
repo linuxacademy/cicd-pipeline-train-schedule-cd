@@ -16,8 +16,8 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'Webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sshPublisher(
                         failOnError: true,
-                        continiueOnError: fales,
-                        publushers: [
+                        continueOnError: fales,
+                        publishers: [
                             sshPublisherDesc(
                                 configName: 'staging',
                                 sshCredentials: [
@@ -48,8 +48,8 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'Webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sshPublisher(
                         failOnError: true,
-                        continiueOnError: fales,
-                        publushers: [
+                        continueOnError: fales,
+                        publishers: [
                             sshPublisherDesc(
                                 configName: 'production',
                                 sshCredentials: [
