@@ -1,0 +1,18 @@
+version: 0.0
+os: linux
+files:
+   - source: /
+     destination: /home/ubuntu/cicd-pipeline-train-schedule-cd/
+hooks:
+  BeforeInstall:
+  - location: BeforeInstall.sh
+    runas: root
+  AfterInstall:
+  - location: AfterInstall.sh
+    runas: root
+  ApplicationStart:
+  - location: Deploy.sh
+    runas: ubuntu
+  ValidateService:
+  - location: Validate.sh
+    runas: root
