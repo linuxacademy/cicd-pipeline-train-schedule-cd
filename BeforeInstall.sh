@@ -1,4 +1,5 @@
 #!/bin/bash
+#su - ubuntu -c "/usr/bin/pm2 stop all"
 su - ubuntu -c "/usr/bin/pm2 stop all"
 su - ubuntu -c "/usr/bin/pm2 delete all"
 sleep 5
