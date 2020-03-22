@@ -1,4 +1,4 @@
 node_modules
 .gradle
 disti
-./for-gitignore/*
+for-gitignore/*
