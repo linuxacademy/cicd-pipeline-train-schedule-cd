@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        git 'apache-maven-3.0.1' 
+    }
     stages {
         stage('Build') {
             steps {
@@ -29,7 +32,7 @@ pipeline {
                                         sourceFiles: 'dist/trainSchedule.zip',
                                         removePrefix: 'dist/',
                                         remoteDirectory: '/tmp',
-                                        execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo /usr/bin/systemctl start train-schedule'
+                                        execCommand: 'sudo rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule'
                                     )
                                 ]
                             )
