@@ -13,6 +13,9 @@ pipeline {
                 branch 'example-solution'
             }
             steps {
+                echo '################################'
+                echo '|---> STAGING'
+                echo '################################'
                 withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sshPublisher(
                         failOnError: true,
