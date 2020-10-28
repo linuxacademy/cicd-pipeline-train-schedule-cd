@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    tools {
-        git 'apache-maven-3.0.1' 
-    }
     stages {
         stage('Build') {
             steps {
