@@ -2,9 +2,6 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-            when {
-                branch 'master'
-            }
             steps {
                 echo 'Running build automation'
                 sh './gradlew build --no-daemon'
@@ -12,9 +9,6 @@ pipeline {
             }
         }
         stage('DeployToStaging') {
-            when {
-                branch 'master'
-            }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sshPublisher(
