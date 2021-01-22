@@ -70,7 +70,7 @@ pipeline {
                     }
                 }
                 // Post-build steps
-                echo 'Completed'
+                echo 'Completed the step'
             }
         }
     }
