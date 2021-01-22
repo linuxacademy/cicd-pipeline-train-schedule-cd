@@ -1,0 +1,1 @@
+git fetch --tags --force --progress -- https://github.com/AntonDykyi/cicd-pipeline-train-schedule-cd +refs/pull/8/*:refs/remotes/origin/pr/8/*

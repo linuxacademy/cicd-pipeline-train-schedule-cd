@@ -1,0 +1,21 @@
+Started by user Riot Division
+Checking out git https://github.com/AntonDykyi/cicd-pipeline-train-schedule-cd into /var/lib/jenkins/workspace/ci-cd2@script to read Jenkinsfile
+using credential github_key
+Cloning the remote Git repository
+Cloning repository https://github.com/AntonDykyi/cicd-pipeline-train-schedule-cd
+ > git init /var/lib/jenkins/workspace/ci-cd2@script # timeout=10
+ Fetching upstream changes from https://github.com/AntonDykyi/cicd-pipeline-train-schedule-cd
+  > git --version # timeout=10
+  using GIT_ASKPASS to set credentials Github Key
+   > git fetch --tags --force --progress -- https://github.com/AntonDykyi/cicd-pipeline-train-schedule-cd +refs/heads/*:refs/remotes/origin/* # timeout=10
+    > git config remote.origin.url https://github.com/AntonDykyi/cicd-pipeline-train-schedule-cd # timeout=10
+     > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+      > git config remote.origin.url https://github.com/AntonDykyi/cicd-pipeline-train-schedule-cd # timeout=10
+      Fetching upstream changes from https://github.com/AntonDykyi/cicd-pipeline-train-schedule-cd
+      using GIT_ASKPASS to set credentials Github Key
+       > git fetch --tags --force --progress -- https://github.com/AntonDykyi/cicd-pipeline-train-schedule-cd +refs/pull/${ghprbPullId}/*:refs/remotes/origin/pr/${ghprbPullId}/* # timeout=10
+        > git rev-parse origin/${ghprbActualCommit}^{commit} # timeout=10
+         > git rev-parse ${ghprbActualCommit}^{commit} # timeout=10
+         ERROR: Couldn't find any revision to build. Verify the repository and branch configuration for this job.
+         ERROR: Maximum checkout retry attempts reached, aborting
+         Finished: FAILURE
