@@ -2,20 +2,6 @@
 // Playground only
 pipeline {
     agent any
-    scm {
-        git {
-            remote {
-                github('AntonDykyi/cicd-pipeline-train-schedule-cd')
-                refspec('+refs/pull/${ghprbPullId}/*:refs/remotes/origin/pr/${ghprbPullId}/*')
-            }
-            branch('${sha1}')
-        }
-    }
-    triggers {
-        githubPullRequest {
-        admins(['AD', 'AntonDykyi'])
-        }
-    }
     stages {
         stage('Build') {
             when {
