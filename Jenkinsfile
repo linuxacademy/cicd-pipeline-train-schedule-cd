@@ -6,8 +6,6 @@ pipeline {
         git {
             remote {
                 github('AntonDykyi/cicd-pipeline-train-schedule-cd')
-                credentialsId('github_key')
-                name('origin')
                 refspec('+refs/pull/${ghprbPullId}/*:refs/remotes/origin/pr/${ghprbPullId}/*')
             }
             branch('${sha1}')
