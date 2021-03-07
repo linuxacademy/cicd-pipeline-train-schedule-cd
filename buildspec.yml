@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - npm install
+  build:
+    commands:
+      - echo Build started on `date`
+      - npm run build
+  post_build:
+    commands:
+      - echo Build completed on `date`
+#reports:
+  #jest_reports:
+    #files:
+     # - jest-junit.xml
+    #file-format: JUNITXML
+    #base-directory: ./testing-reports
