@@ -14,7 +14,20 @@ pipeline {
             }
             steps {
                 script {
-                    app = docker.build("jaigopinath528/train-schedule")
+                    app = docker.build("jaigopinath528/train-schedule-master")
+                    app.inside {
+                        sh 'echo $(curl localhost:8080)'
+                    }
+                }
+            }
+        }
+        stage('Build Docker Image for dev') {
+            when {
+                branch 'dev'
+            }
+            steps {
+                script {
+                    app = docker.build("jaigopinath528/train-schedule-dev")
                     app.inside {
                         sh 'echo $(curl localhost:8080)'
                     }
