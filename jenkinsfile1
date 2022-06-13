@@ -1,0 +1,67 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Running build automation'
+                sh './gradlew build --no-daemon'
+                archiveArtifacts artifacts: 'dist/trainSchedule.zip'
+            }
+        }
+        stage('Build Docker Image') {
+            when {
+                branch 'master'
+            }
+            steps {
+                script {
+                    app = docker.build("jaigopinath528/train-schedule-master")
+                    app.inside {
+                        sh 'echo $(curl localhost:8080)'
+                    }
+                }
+            }
+        }
+        stage('Build Docker Image for dev') {
+            when {
+                branch 'dev'
+            }
+            steps {
+                script {
+                    app = docker.build("jaigopinath528/train-schedule-dev")
+                    app.inside {
+                        sh 'echo $(curl localhost:8080)'
+                    }
+                }
+            }
+        }
+        stage('Push Docker Image with prod') {
+            when {
+                branch 'master'
+            }
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
+                        app.push("${env.BUILD_NUMBER}")
+                        app.push("live-latest")
+                    echo "Deployment to Production env is successful "
+                    }
+                }
+            }
+        }
+        stage('Push Docker Image with dev') {
+            when {
+                branch 'dev'
+            }
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
+                        app.push("${env.BUILD_NUMBER}")
+                        app.push("latest")
+                     echo "Deployment to dev env is successful "
+                    }
+                }
+            }
+        }    
+ 
+    }   
+}
